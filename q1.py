@@ -1,4 +1,4 @@
-from pprint import pprint
+# from pprint import pprint
 
 with open(r"d1.txt", "r") as myfile:
     data = myfile.read()
@@ -7,37 +7,50 @@ arr = data.split(', ')
 
 # pprint(arr)
 
-arr = ['R2', 'R2', 'R2']
+# arr = ['R5', 'L5', 'R5', 'R3']
 
 direction = '^'
 xaxis = 0
 yaxis = 0
+counter = 1
 
 for cmd in arr:
     if cmd[0] == 'L' and direction == '^':
         xaxis -= int(cmd[1:])
         direction = '<'
-    if cmd[0] == 'R' and direction == '^':
+        condition_number = 1
+    elif cmd[0] == 'R' and direction == '^':
         xaxis += int(cmd[1:])
         direction = '>'
-    if cmd[0] == 'L' and direction == 'v':
+        condition_number = 2
+    elif cmd[0] == 'L' and direction == 'v':
         xaxis += int(cmd[1:])
         direction = '>'
-    if cmd[0] == 'R' and direction == 'v':
+        condition_number = 3
+    elif cmd[0] == 'R' and direction == 'v':
         xaxis -= int(cmd[1:])
         direction = '<'
-    if cmd[0] == 'L' and direction == '>':
+        condition_number = 4
+    elif cmd[0] == 'L' and direction == '>':
         yaxis += int(cmd[1:])
         direction = '^'
-    if cmd[0] == 'R' and direction == '>':
+        condition_number = 5
+    elif cmd[0] == 'R' and direction == '>':
         yaxis -= int(cmd[1:])
         direction = 'v'
-    if cmd[0] == 'L' and direction == '<':
+        condition_number = 6
+    elif cmd[0] == 'L' and direction == '<':
         yaxis -= int(cmd[1:])
         direction = 'v'
-    if cmd[0] == 'R' and direction == '<':
+        condition_number = 7
+    elif cmd[0] == 'R' and direction == '<':
         yaxis += int(cmd[1:])
         direction = '^'
+        condition_number = 8
+    print(str(counter) + ". Direction: " + direction + " Command: " + cmd[0] + cmd[1:] + " (" + str(xaxis) + ", " + str(yaxis) + ") -- " + str(condition_number))
+    counter += 1
 
-print(xaxis)
-print(yaxis)
+# print(xaxis)
+# print(yaxis)
+
+print(abs(xaxis) + abs(yaxis))
