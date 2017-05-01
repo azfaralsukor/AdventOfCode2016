@@ -14,6 +14,10 @@ xaxis = 0
 yaxis = 0
 counter = 1
 
+# Creates a list containing 5 lists, each of 8 items, all set to 0
+w, h = 999, 999
+Matrix = [[0 for x in range(w)] for y in range(h)]
+
 for cmd in arr:
     if cmd[0] == 'L' and direction == '^':
         xaxis -= int(cmd[1:])
